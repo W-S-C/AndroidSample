@@ -7,7 +7,8 @@ import kotlinx.coroutines.launch
 
 class MainActivityViewModel : ViewModel() {
 
-    val dataList = MutableLiveData<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
+    val list = MutableLiveData<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
+    val listSortedByUUU = MutableLiveData<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
 
     private val service = RetrofitApi.serviceInterface
 
@@ -23,8 +24,11 @@ class MainActivityViewModel : ViewModel() {
                 127
             )
 
-            val list = response.body()?.response?.body?.items?.item
-            dataList.value = list
+            list.value = response.body()?.response?.body?.items?.item
+            listSortedByUUU.value = response.body()?.response?.body?.items?.item?.sortedBy {
+                it?.category == "UUU"
+            }
         }
+
     }
 }

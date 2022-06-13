@@ -18,9 +18,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setRetrofit() {
         viewModel.updateList()
-        viewModel.dataList.observe(this) { list ->
+
+        viewModel.list.observe(this) { list ->
             list?.forEach { it ->
-                Log.d("Item List", it.toString())
+                Log.d("Whole List", it.toString())
+            }
+        }
+
+        viewModel.listSortedByUUU.observe(this) { list ->
+            list?.forEach { it ->
+                Log.d("Sorted List", it.toString())
             }
         }
     }

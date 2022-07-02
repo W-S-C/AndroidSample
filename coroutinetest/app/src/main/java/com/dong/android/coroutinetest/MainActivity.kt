@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.collect
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,9 +21,11 @@ class MainActivity : AppCompatActivity() {
     private fun setRetrofit() {
         viewModel.updateList()
 
-        viewModel.list.observe(this) { list ->
-            list?.forEach { it ->
-                Log.d("Whole List", it.toString())
+        lifecycleScope.launchWhenStarted {
+            viewModel.list.collect { list ->
+                list?.forEach { it ->
+                    Log.d("Whole List", it.toString())
+                }
             }
         }
 

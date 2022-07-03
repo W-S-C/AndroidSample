@@ -17,6 +17,6 @@ interface ServiceInterface {
         @Query("base_time") base_time: String,  // 발표 시각
         @Query("nx") nx: Int,                // 예보지점 X 좌표
         @Query("ny") ny: Int,                // 예보지점 Y 좌표
-    ): Response<WeatherApiResponse>
+    ): WeatherApiResponse
 
 }

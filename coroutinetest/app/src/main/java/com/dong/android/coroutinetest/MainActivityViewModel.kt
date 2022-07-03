@@ -14,7 +14,7 @@ class MainActivityViewModel : ViewModel() {
     private val _list = MutableSharedFlow<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
     val list = _list.asSharedFlow()
 
-    val listSortedByUUU = MutableLiveData<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
+    val listSortedByUUU = MutableSharedFlow<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
 
     private val service = RetrofitApi.serviceInterface
 
@@ -30,12 +30,14 @@ class MainActivityViewModel : ViewModel() {
                 127
             )
 
-            val value = response.body()?.response?.body?.items?.item
+            val value = response.response?.body?.items?.item
             _list.emit(value)
 
-            listSortedByUUU.value = response.body()?.response?.body?.items?.item?.sortedBy {
+            val sortedValue = response.response?.body?.items?.item?.sortedBy {
                 it?.category == "UUU"
             }
+
+            listSortedByUUU.emit(sortedValue)
         }
 
     }

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.flow.collect
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,10 +28,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        viewModel.listSortedByUUU.observe(this) { list ->
-            list?.forEach { it ->
-                Log.d("Sorted List", it.toString())
+        lifecycleScope.launchWhenStarted {
+            viewModel.listSortedByUUU.collect{ list ->
+                list?.forEach {it ->
+                    Log.d("SortedList", it.toString())
+                }
             }
         }
+
+//        viewModel.listSortedByUUU.observe(this) { list ->
+//            list?.forEach { it ->
+//                Log.d("Sorted List", it.toString())
+//            }
+//        }
     }
 }

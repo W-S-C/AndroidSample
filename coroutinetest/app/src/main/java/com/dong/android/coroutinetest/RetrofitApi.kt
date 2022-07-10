@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitApi {
-    private const val BASE_URL = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/"
+    private const val BASE_URL = "http://apis.data.go.kr/1360000/AsosHourlyInfoService/"
 
     private val okHttpClient: OkHttpClient by lazy {
         OkHttpClient.Builder()

@@ -11,31 +11,34 @@ import kotlinx.coroutines.launch
 
 class MainActivityViewModel : ViewModel() {
 
-    private val _list = MutableSharedFlow<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
+    private val _list = MutableSharedFlow<List<WeatherApiResponse2.Response.Body.Items.Item?>?>()
     val list = _list.asSharedFlow()
 
-    val listSortedByUUU = MutableLiveData<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
+    val listSortedByUUU = MutableSharedFlow<List<WeatherApiResponse2.Response.Body.Items.Item?>?>()
 
     private val service = RetrofitApi.serviceInterface
 
     fun updateList() {
         viewModelScope.launch {
             val response = service.getWeather(
-                100,
                 1,
+                100,
                 "JSON",
-                "20220702",
-                "0500",
-                55,
-                127
+                "ASOS",
+                "HR",
+                "20100101",
+                "01",
+                "20100601",
+                "01",
+                "108"
             )
 
-            val value = response.body()?.response?.body?.items?.item
+            val value = response.response?.body?.items?.item
             _list.emit(value)
 
-            listSortedByUUU.value = response.body()?.response?.body?.items?.item?.sortedBy {
-                it?.category == "UUU"
-            }
+            val sortedValue = response.response?.body?.items?.item
+
+            listSortedByUUU.emit(sortedValue)
         }
 
     }

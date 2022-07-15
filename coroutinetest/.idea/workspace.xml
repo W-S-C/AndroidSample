@@ -10,11 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f58eda87-c570-4605-a4ae-d6a24c2dbc0b" name="Changes" comment="SharedFlow">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/dong/android/coroutinetest/WeatherApiResponse2.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/dong/android/workmanagertest/MainActivityViewModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/dong/android/workmanagertest/RetrofitApi.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/dong/android/workmanagertest/ServiceInterface.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/dong/android/workmanagertest/WeatherApiResponse.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorkManagerTest/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../WorkManagerTest/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/dong/android/workmanagertest/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../WorkManagerTest/app/src/main/java/com/dong/android/workmanagertest/MainActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dong/android/coroutinetest/RetrofitApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dong/android/coroutinetest/RetrofitApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/dong/android/coroutinetest/RetrofitInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/dong/android/coroutinetest/RetrofitInterface.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

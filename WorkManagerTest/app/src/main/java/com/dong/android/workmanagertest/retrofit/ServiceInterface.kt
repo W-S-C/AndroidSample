@@ -1,4 +1,4 @@
-package com.dong.android.workmanagertest
+package com.dong.android.workmanagertest.retrofit
 
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.work.WorkManager
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,14 +19,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setRetrofit() {
-        viewModel.updateList()
+        viewModel.startOneTimeWorkManager(WorkManager.getInstance(this))
 
         lifecycleScope.launchWhenStarted {
-            viewModel.list.collect { list ->
-                list?.forEach { it ->
-                    Log.d("Whole List", it.toString())
-                }
-            }
+//            viewModel.list.collect { list ->
+//                list?.forEach { it ->
+//                    Log.d("Whole List", it.toString())
+//                }
+//            }
         }
     }
 }

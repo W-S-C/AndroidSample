@@ -1,4 +1,4 @@
-package com.dong.android.workmanagertest
+package com.dong.android.workmanagertest.retrofit
 
 data class WeatherApiResponse(
     val response: Response?

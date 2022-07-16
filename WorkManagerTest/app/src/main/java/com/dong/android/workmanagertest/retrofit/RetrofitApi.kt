@@ -1,4 +1,4 @@
-package com.dong.android.workmanagertest
+package com.dong.android.workmanagertest.retrofit
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

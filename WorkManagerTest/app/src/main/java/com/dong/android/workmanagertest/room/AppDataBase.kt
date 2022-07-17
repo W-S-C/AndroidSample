@@ -2,7 +2,6 @@ package com.dong.android.workmanagertest.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.dong.android.workmanagertest.retrofit.WeatherApiResponse
 import com.dong.android.workmanagertest.retrofit.WeatherItem
 
 @Database(

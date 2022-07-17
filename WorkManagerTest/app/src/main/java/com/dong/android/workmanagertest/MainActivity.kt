@@ -8,7 +8,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.work.WorkManager
 import com.dong.android.workmanagertest.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {

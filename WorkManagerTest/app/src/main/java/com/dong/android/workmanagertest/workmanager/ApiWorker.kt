@@ -25,7 +25,6 @@ class ApiWorker @AssistedInject constructor(
     }
 
     private suspend fun getApi() {
-        Log.d("Worker", "Worker worked in ${Thread.currentThread().name}!")
         val service = RetrofitApi.serviceInterface
         val response = service.getWeather(
             10,
@@ -38,6 +37,8 @@ class ApiWorker @AssistedInject constructor(
         )
 
         val value = response.response?.body?.items?.item
+
+        itemDao.deleteAll()
 
         if (value != null) {
             for (i in value) {

@@ -1,6 +1,5 @@
 package com.dong.android.workmanagertest
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.work.OneTimeWorkRequestBuilder
@@ -9,7 +8,6 @@ import com.dong.android.workmanagertest.retrofit.WeatherApiResponse
 import com.dong.android.workmanagertest.room.ItemDao
 import com.dong.android.workmanagertest.workmanager.ApiWorker
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
@@ -17,8 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
-    private val itemDao: ItemDao
-): ViewModel() {
+    private val itemDao: ItemDao,
+) : ViewModel() {
 
     private val _list = MutableSharedFlow<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
     val list = _list.asSharedFlow()
@@ -28,11 +26,10 @@ class MainActivityViewModel @Inject constructor(
         workManager.enqueue(workRequest)
     }
 
-    fun getList(){
-        viewModelScope.launch(Dispatchers.IO) {
+    fun getList() {
+        viewModelScope.launch {
             val apiList = mutableListOf<WeatherApiResponse.Response.Body.Items.Item>()
             itemDao.getAll()?.forEach {
-                Log.d("viewModel", it.toString())
                 apiList.add(
                     WeatherApiResponse.Response.Body.Items.Item(
                         it.baseDate,

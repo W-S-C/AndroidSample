@@ -2,16 +2,23 @@ package com.dong.android.workmanagertest.workmanager
 
 import android.content.Context
 import android.util.Log
+import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.dong.android.workmanagertest.retrofit.RetrofitApi
-import com.dong.android.workmanagertest.retrofit.WeatherApiResponse
-import kotlinx.coroutines.flow.MutableSharedFlow
+import com.dong.android.workmanagertest.retrofit.WeatherItem
+import com.dong.android.workmanagertest.room.AppDataBase
+import com.dong.android.workmanagertest.room.ItemDao
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
+import javax.inject.Inject
 
-class ApiWorker(context: Context, workerParams: WorkerParameters) :
-    CoroutineWorker(context, workerParams) {
-
-    val dataAsFlow = MutableSharedFlow<List<WeatherApiResponse.Response.Body.Items.Item?>?>()
+@HiltWorker
+class ApiWorker @AssistedInject constructor(
+    @Assisted context: Context,
+    @Assisted workerParams: WorkerParameters,
+    private val itemDao: ItemDao,
+) : CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result {
         getApi()
@@ -32,10 +39,24 @@ class ApiWorker(context: Context, workerParams: WorkerParameters) :
         )
 
         val value = response.response?.body?.items?.item
-        dataAsFlow.emit(value)
+
         if (value != null) {
             for (i in value) {
                 Log.d("Worker", i.toString())
+                if (i != null) {
+                    val dbValue = WeatherItem(
+                        id = 0,
+                        i.baseDate,
+                        i.baseTime,
+                        i.category,
+                        i.fcstDate,
+                        i.fcstTime,
+                        i.fcstValue,
+                        i.nx,
+                        i.ny
+                    )
+                    itemDao.insertList(dbValue)
+                }
             }
         }
     }

@@ -7,11 +7,10 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.dong.android.workmanagertest.retrofit.RetrofitApi
 import com.dong.android.workmanagertest.retrofit.WeatherItem
-import com.dong.android.workmanagertest.room.AppDataBase
 import com.dong.android.workmanagertest.room.ItemDao
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
-import javax.inject.Inject
+
 
 @HiltWorker
 class ApiWorker @AssistedInject constructor(
@@ -55,6 +54,7 @@ class ApiWorker @AssistedInject constructor(
                         i.nx,
                         i.ny
                     )
+
                     itemDao.insertList(dbValue)
                 }
             }
